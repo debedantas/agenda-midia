@@ -6,6 +6,7 @@ import modelo.Usuario;
 import java.sql.SQLException;
 
 public interface IUsuarioController {
-    public Usuario getUsuario(String username) throws SQLException;
-    public int addUsuario(Usuario usuario) throws SQLException, UsuarioJaExisteException;
+    Usuario getUsuario(String username) throws SQLException;
+    int addUsuario(Usuario usuario) throws SQLException, UsuarioJaExisteException;
+    Usuario login(String usuario, String senha) throws SQLException;
 }

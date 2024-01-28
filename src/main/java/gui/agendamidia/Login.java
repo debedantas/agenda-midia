@@ -17,18 +17,17 @@ public class Login {
 
     public void logar(ActionEvent actionEvent) {
         try {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Alerta");
+            alerta.setHeaderText(null);
+
             UsuarioController uc = new UsuarioController();
             Usuario u = uc.login(login.getText(), senha.getText());
+
             if (u == null) {
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("Alerta");
-                alerta.setHeaderText(null);
                 alerta.setContentText("Usuário ou senha incorretos");
                 alerta.showAndWait();
             } else {
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("Alerta");
-                alerta.setHeaderText(null);
                 alerta.setContentText("LOGADO");
                 alerta.showAndWait();
             }

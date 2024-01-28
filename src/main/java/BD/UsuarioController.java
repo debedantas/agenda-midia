@@ -51,6 +51,7 @@ public class UsuarioController implements IUsuarioController {
         return n;
     }
 
+    @Override
     public Usuario login(String usuario, String senha) throws SQLException {
         Usuario u = getUsuario(usuario);
         if (u == null || !senha.equals(u.getSenha())) return null;

@@ -26,9 +26,7 @@ public class Test {
             while (rs.next()) {
                 System.out.println(rs.getString("usuario"));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (con != null) {
