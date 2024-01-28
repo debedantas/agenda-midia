@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.agendamidia.TelaPrincipal">
+   <children>
+      <Label layoutX="257.0" layoutY="102.0" text="Bem Vindo, XXX" />
+      <Button layoutX="274.0" layoutY="157.0" mnemonicParsing="false" text="Meu Perfil" />
+      <Button layoutX="250.0" layoutY="194.0" mnemonicParsing="false" text="Catálogo de Filmes" />
+      <Button layoutX="265.0" layoutY="264.0" mnemonicParsing="false" text="Minhas Listas" />
+      <Button layoutX="251.0" layoutY="228.0" mnemonicParsing="false" text="Catálogo de Séries" />
+   </children>
+</AnchorPane>

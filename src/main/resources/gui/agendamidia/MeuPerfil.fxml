@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.agendamidia.MeuPerfil">
+   <children>
+      <Label alignment="TOP_LEFT" layoutX="273.0" layoutY="84.0" text="Meu Perfil" textAlignment="CENTER" />
+      <Label alignment="TOP_LEFT" layoutX="67.0" layoutY="174.0" text="Tipo de conta: XXXX" textAlignment="CENTER" />
+      <Label alignment="TOP_LEFT" layoutX="67.0" layoutY="143.0" text="Nome: XXXXX" textAlignment="CENTER" />
+      <Button layoutX="67.0" layoutY="223.0" mnemonicParsing="false" text="Minhas Avaliações" />
+   </children>
+</AnchorPane>
