@@ -9,12 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import modelo.Usuario;
 
 import java.sql.SQLException;
-import java.util.Map;
 
 public class Login {
-    private Map<String, String> users = Map.of(
-            "user1", "senha1"
-    );
     public PasswordField senha;
     public TextField login;
     public AnchorPane cena;
