@@ -3,7 +3,6 @@ package gui.agendamidia;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -16,10 +15,8 @@ public class TelasController {
         try {
             FXMLLoader loginLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
             this.loginScene = new Scene(loginLoader.load());
-            this.loginScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             FXMLLoader cadastroLoader = new FXMLLoader(Main.class.getResource("Cadastro.fxml"));
             this.cadastroScene = new Scene(cadastroLoader.load());
-            this.cadastroScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         } catch (IOException e) {
             e.printStackTrace();
         }

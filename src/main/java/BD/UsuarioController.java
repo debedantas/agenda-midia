@@ -51,9 +51,15 @@ public class UsuarioController implements IUsuarioController {
         return n;
     }
 
+    public Usuario login(String usuario, String senha) throws SQLException {
+        Usuario u = getUsuario(usuario);
+        if (u == null || !senha.equals(u.getSenha())) return null;
+
+        return u;
+    }
+
     public static void main(String[] args) {
         try {
-
             UsuarioController uc = new UsuarioController();
             Usuario u1 = uc.getUsuario("user1");
 

@@ -1,9 +1,14 @@
 package gui.agendamidia;
 
+import BD.UsuarioController;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import modelo.Usuario;
+
+import java.sql.SQLException;
 import java.util.Map;
 
 public class Login {
@@ -15,16 +20,24 @@ public class Login {
     public AnchorPane cena;
 
     public void logar(ActionEvent actionEvent) {
-        // mudar logica de pegar user do banco, criar exception caso user não exista
         try {
-            String user = users.get(login.getText());
-            if (user.equals(senha.getText())) {
-                System.out.println("LOGADO");
+            UsuarioController uc = new UsuarioController();
+            Usuario u = uc.login(login.getText(), senha.getText());
+            if (u == null) {
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Alerta");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Usuário ou senha incorretos");
+                alerta.showAndWait();
             } else {
-                System.out.println("NÃO LOGADO");
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Alerta");
+                alerta.setHeaderText(null);
+                alerta.setContentText("LOGADO");
+                alerta.showAndWait();
             }
-        } catch(NullPointerException e) {
-            System.out.println("USER NÃO EXISTE");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
