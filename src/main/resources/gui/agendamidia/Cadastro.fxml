@@ -9,32 +9,26 @@
 
 <AnchorPane fx:id="cena" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.agendamidia.Cadastro">
     <children>
-      <AnchorPane layoutX="286.0" layoutY="117.0">
-         <children>
-              <Label text="Nome:" />
-              <TextField fx:id="nome" layoutY="17.0" onMouseClicked="#getSource" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="286.0" layoutY="174.0">
+      <AnchorPane layoutX="285.0" layoutY="141.0">
          <children>
               <Label text="Login:" />
               <TextField fx:id="login" layoutY="17.0" onMouseClicked="#getSource" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="285.0" layoutY="227.0">
+      <AnchorPane layoutX="285.0" layoutY="204.0">
          <children>
               <Label text="Senha:" />
               <PasswordField fx:id="senha" layoutY="17.0" onMouseClicked="#getSource" />
          </children>
       </AnchorPane>
         <Label layoutX="335.0" layoutY="90.0" text="Cadastro" />
-      <AnchorPane layoutX="284.0" layoutY="357.0">
+      <AnchorPane layoutX="285.0" layoutY="326.0">
          <children>
-              <Button mnemonicParsing="false" onAction="#validar" scaleZ="10.0" text="Cadastrar" />
-              <Button layoutX="102.0" mnemonicParsing="false" onAction="#showLogin" text="Voltar" />
+              <Button layoutY="6.0" mnemonicParsing="false" onAction="#validar" scaleZ="10.0" text="Cadastrar" />
+              <Button layoutX="102.0" layoutY="6.0" mnemonicParsing="false" onAction="#showLogin" text="Voltar" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="284.0" layoutY="284.0">
+      <AnchorPane layoutX="284.0" layoutY="264.0">
          <children>
             <ChoiceBox fx:id="contaSelector" layoutX="2.0" layoutY="17.0" prefWidth="150.0" />
             <Label text="Tipo de Conta:" />
