@@ -28,8 +28,9 @@ public class Login {
                 alerta.setContentText("Usuário ou senha incorretos");
                 alerta.showAndWait();
             } else {
-                alerta.setContentText("LOGADO");
-                alerta.showAndWait();
+                ApplicationController.getInstance().setUsuarioLogado(u);
+
+                TelasController.getInstance().mostraTelaPrincipal();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

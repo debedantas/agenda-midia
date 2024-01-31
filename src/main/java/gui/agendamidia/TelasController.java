@@ -10,6 +10,7 @@ public class TelasController {
     private static TelasController instance;
     private Scene loginScene;
     private Scene cadastroScene;
+
     private Stage mainStage;
     private TelasController() {
         try {
@@ -49,5 +50,46 @@ public class TelasController {
     }
 
     public void mostraTelaPrincipal() {
+        try {
+            FXMLLoader telaPrincipalLoader = new FXMLLoader(Main.class.getResource("TelaPrincipal.fxml"));
+            Scene telaPrincipalScene = new Scene(telaPrincipalLoader.load());
+            this.mainStage.setScene(telaPrincipalScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraMeuPerfil() {
+        try {
+            FXMLLoader meuPerfilLoader = new FXMLLoader(Main.class.getResource("MeuPerfil.fxml"));
+            Scene meuPerfilScene = new Scene(meuPerfilLoader.load());
+            this.mainStage.setScene(meuPerfilScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraTelaMidias() {
+        try {
+            FXMLLoader midiasLoader = new FXMLLoader(Main.class.getResource("TelaMidias.fxml"));
+            Scene midias = new Scene(midiasLoader.load());
+            this.mainStage.setScene(midias);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraTelaMidiaEspecifica() {
+        try {
+            FXMLLoader filmesLoader = new FXMLLoader(Main.class.getResource("TelaMidiaEspecifica.fxml"));
+            Scene filmes = new Scene(filmesLoader.load());
+            this.mainStage.setScene(filmes);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

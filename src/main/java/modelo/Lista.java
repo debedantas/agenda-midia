@@ -5,6 +5,7 @@ import exceptions.MidiaJaNaListaException;
 import java.util.Vector;
 
 public class Lista {
+    private int id;
     private String nomeDaLista;
     private Vector<Midia> listaDeMidia = new Vector<>();
 
@@ -57,5 +58,13 @@ public class Lista {
 
     private void setListaDeMidia(Vector<Midia> lista) {
         this.listaDeMidia = lista;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

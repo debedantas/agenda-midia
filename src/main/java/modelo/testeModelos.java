@@ -4,10 +4,10 @@ import exceptions.MidiaJaNaListaException;
 
 public class testeModelos {
     public static void main(String[] args) throws MidiaJaNaListaException {
-        Midia filme1 = new Filme("filme1", 2012, Genero.AVENTURA, 120);
-        Midia filme2 = new Filme("filme2", 2022, Genero.TERROR, 100);
-        Midia serie1 = new Serie("serie1", 1999, Genero.AVENTURA, 24);
-        Midia serie2 = new Filme("serie2", 2018, Genero.MUSICAL, 40);
+        Midia filme1 = new Filme(1, "filme1", 2012, Genero.AVENTURA, 120);
+        Midia filme2 = new Filme(2, "filme2", 2022, Genero.TERROR, 100);
+        Midia serie1 = new Serie(3, "serie1", 1999, Genero.AVENTURA, 24);
+        Midia serie2 = new Filme(4, "serie2", 2018, Genero.MUSICAL, 40);
 
         IUsuario usuario = new UsuarioPadrao("user", "senha");
         Lista lista1 = new Lista("Lista 1");

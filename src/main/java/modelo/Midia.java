@@ -3,12 +3,14 @@ package modelo;
 import java.util.Vector;
 
 public abstract class Midia {
+    private int id;
     private String titulo;
     private int ano;
     private Vector<Avaliacao> avaliacoes = new Vector<>();
     private Genero genero;
 
-    public Midia(String titulo, int ano, Genero genero) {
+    public Midia(int id, String titulo, int ano, Genero genero) {
+        this.id = id;
         this.titulo = titulo;
         this.ano = ano;
         this.genero = genero;
@@ -53,5 +55,13 @@ public abstract class Midia {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -3,8 +3,8 @@ package modelo;
 public class Filme extends Midia {
     private int duracao;
 
-    public Filme(String titulo, int ano, Genero genero, int duracao) {
-        super(titulo, ano, genero);
+    public Filme(int id, String titulo, int ano, Genero genero, int duracao) {
+        super(id, titulo, ano, genero);
         this.duracao = duracao;
     }
 

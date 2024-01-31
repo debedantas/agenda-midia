@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         TelasController.getInstance().setMainStage(stage);
         TelasController.getInstance().mostraLogin();
     }
