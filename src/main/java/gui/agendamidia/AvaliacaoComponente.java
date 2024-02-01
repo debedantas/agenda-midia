@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -20,13 +21,14 @@ import java.util.ResourceBundle;
 
 public class AvaliacaoNode implements Initializable {
     private final Avaliacao avaliacao;
-
     private final boolean mostrarEditavel;
+    private final VBox scrollPane;
+
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private VBox avaliacaoVBox;
-    @FXML
-    private VBox edicaoVBox;
 
     @FXML
     private Label comentario;
@@ -43,14 +45,17 @@ public class AvaliacaoNode implements Initializable {
     @FXML
     private Label user;
 
-    public AvaliacaoNode(Avaliacao avaliacao) {
+    public AvaliacaoNode(Avaliacao avaliacao, VBox scrollPane) {
         this.avaliacao = avaliacao;
-        this.mostrarEditavel = false;
+        this.mostrarEditavel = true;
+        this.scrollPane = scrollPane;
     }
 
-    public AvaliacaoNode(Avaliacao avaliacao, boolean mostrarEditavel) {
+    public AvaliacaoNode(Avaliacao avaliacao, VBox scrollPane, boolean mostrarEditavel) {
         this.avaliacao = avaliacao;
         this.mostrarEditavel = mostrarEditavel;
+        this.scrollPane = scrollPane;
+
     }
 
     @Override
@@ -70,18 +75,11 @@ public class AvaliacaoNode implements Initializable {
     }
 
     @FXML
-    void editar(ActionEvent actionEvent) {
-        edicaoVBox.setVisible(true);
-        avaliacaoVBox.setVisible(false);
-    }
-
-
-    @FXML
-    void atualizarAvaliacao(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cancelar(ActionEvent event) {
+    void editar(ActionEvent actionEvent) throws IOException {
+        FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("editarAvaliacao.fxml"));
+        Parent editAv = avalicaoLoader.load();
+        int index = scrollPane.getChildren().indexOf(anchorPane);
+        scrollPane.getChildren().remove(index);
+        scrollPane.getChildren().add(index, editAv);
     }
 }
