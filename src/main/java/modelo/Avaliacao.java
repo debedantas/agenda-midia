@@ -3,16 +3,20 @@ package modelo;
 import java.time.LocalDate;
 
 public class Avaliacao {
+    private int id;
     private String comentario;
-    private float nota;
+    private double nota;
     private LocalDate createdAt;
-    private IUsuario usuario;
+    private String usuario;
+    private int midiaId;
 
-    public Avaliacao(String comentario, float nota, LocalDate createdAt, IUsuario usuario) {
+    public Avaliacao(int id, String comentario, double nota, LocalDate createdAt, String usuario, int midiaId) {
+        this.id = id;
         this.comentario = comentario;
         this.nota = nota;
         this.createdAt = createdAt;
         this.usuario = usuario;
+        this.midiaId = midiaId;
     }
 
     // CRUD();
@@ -25,7 +29,7 @@ public class Avaliacao {
         this.comentario = comentario;
     }
 
-    public float getNota() {
+    public double getNota() {
         return nota;
     }
 
@@ -37,7 +41,7 @@ public class Avaliacao {
         return createdAt;
     }
 
-    public IUsuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 }

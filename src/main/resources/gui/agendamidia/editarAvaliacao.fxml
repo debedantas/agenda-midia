@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<AnchorPane prefHeight="140.0" prefWidth="280.0" style="-fx-border-color: #444; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="5.599999904632568" layoutY="5.599999904632568" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="280.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <GridPane prefWidth="280.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox fx:id="edicaoVBox" prefHeight="279.6" prefWidth="353.4" visible="false">
+                     <children>
+                        <Label fx:id="filmeLabel" text="Filme" />
+                        <VBox>
+                           <children>
+                              <Label text="Nota:" />
+                              <Slider fx:id="notaSlider" blockIncrement="0.5" majorTickUnit="0.5" max="5.0" minorTickCount="0" prefHeight="34.0" prefWidth="346.0" showTickLabels="true" snapToTicks="true" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="editarComentario" maxHeight="42.0" prefHeight="50.0" prefWidth="281.0" promptText="Seu comentário..." />
+                        <HBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#atualizarAvaliacao" prefHeight="27.0" prefWidth="120.0" text="Atualizar">
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Button>
+                              <Region prefHeight="27.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#cancelar" prefHeight="26.0" prefWidth="113.6" style="-fx-border-color: #777; -fx-border-radius: 2; -fx-background-color: #aaa;" text="Cancelar">
+                                 <padding>
+                                    <Insets bottom="4.0" left="20.0" right="20.0" top="4.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="avaliacaoVBox" prefHeight="151.20000009536744" prefWidth="282.40000009536743" style="-fx-spacing: 5;">
+                     <children>
+                        <Label fx:id="user" prefHeight="20.0" prefWidth="270.0" text="user" underline="true" />
+                        <Label fx:id="data" prefHeight="20.0" prefWidth="163.0" text="Data:" />
+                        <Label fx:id="nota" prefHeight="20.0" prefWidth="74.0" text="Nota: " />
+                        <Label fx:id="comentario" alignment="TOP_LEFT" maxHeight="200.0" prefHeight="35.0" prefWidth="270.0" text="Comentário:" wrapText="true" />
+                        <HBox fx:id="editAvaliacao" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="198.0" style="-fx-spacing: 5;">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#deletar" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <SVGPath content="m4.015 5.494h-.253c-.413 0-.747-.335-.747-.747s.334-.747.747-.747h5.253v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-.254v15.435c0 .591-.448 1.071-1 1.071-2.873 0-11.127 0-14 0-.552 0-1-.48-1-1.071zm14.5 0h-13v15.006h13zm-4.25 2.506c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm-4.5 0c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm3.75-4v-.5h-3v.5z" onMouseClicked="#deletar" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets top="1.0" />
+                                 </padding>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#editar" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <SVGPath content="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.749c0-.414.336-.75.75-.75s.75.336.75.75v9.249c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm1.521 9.689 9.012-9.012c.133-.133.217-.329.217-.532 0-.179-.065-.363-.218-.515l-2.423-2.415c-.143-.143-.333-.215-.522-.215s-.378.072-.523.215l-9.027 8.996c-.442 1.371-1.158 3.586-1.264 3.952-.126.433.198.834.572.834.41 0 .696-.099 4.176-1.308zm-2.258-2.392 1.17 1.171c-.704.232-1.274.418-1.729.566zm.968-1.154 7.356-7.331 1.347 1.342-7.346 7.347z" onMouseClicked="#editar" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+                                 </graphic>
+                                 <padding>
+                                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

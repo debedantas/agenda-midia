@@ -1,5 +1,6 @@
 package gui.agendamidia;
 
+import BD.AvaliacaoController;
 import BD.MidiaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;

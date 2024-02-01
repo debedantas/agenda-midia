@@ -31,6 +31,10 @@ public class TelasController {
         return instance;
     }
 
+    public Stage getMainStage() {
+        return this.mainStage;
+    }
+
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
         mainStage.setWidth(720);
