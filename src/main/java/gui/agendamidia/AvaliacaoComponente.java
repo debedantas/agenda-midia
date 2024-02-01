@@ -4,11 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,10 +13,9 @@ import modelo.Avaliacao;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class AvaliacaoNode implements Initializable {
+public class AvaliacaoComponente implements Initializable {
     private final Avaliacao avaliacao;
     private final boolean mostrarEditavel;
     private final VBox scrollPane;
@@ -45,13 +41,13 @@ public class AvaliacaoNode implements Initializable {
     @FXML
     private Label user;
 
-    public AvaliacaoNode(Avaliacao avaliacao, VBox scrollPane) {
+    public AvaliacaoComponente(Avaliacao avaliacao, VBox scrollPane) {
         this.avaliacao = avaliacao;
         this.mostrarEditavel = true;
         this.scrollPane = scrollPane;
     }
 
-    public AvaliacaoNode(Avaliacao avaliacao, VBox scrollPane, boolean mostrarEditavel) {
+    public AvaliacaoComponente(Avaliacao avaliacao, VBox scrollPane, boolean mostrarEditavel) {
         this.avaliacao = avaliacao;
         this.mostrarEditavel = mostrarEditavel;
         this.scrollPane = scrollPane;
@@ -76,7 +72,7 @@ public class AvaliacaoNode implements Initializable {
 
     @FXML
     void editar(ActionEvent actionEvent) throws IOException {
-        FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("editarAvaliacao.fxml"));
+        FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("EditarAvaliacaoComponente.fxml"));
         Parent editAv = avalicaoLoader.load();
         int index = scrollPane.getChildren().indexOf(anchorPane);
         scrollPane.getChildren().remove(index);

@@ -12,7 +12,6 @@ import modelo.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TelaMidiaEspecifica implements Initializable {
@@ -46,8 +45,8 @@ public class TelaMidiaEspecifica implements Initializable {
 
     private void carregarAvaliacoes() throws IOException {
         for (Avaliacao av : midia.getAvaliacoes()) {
-            FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("editarAvaliacao.fxml"));
-            avalicaoLoader.setController(new AvaliacaoNode(av));
+            FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("AvaliacaoComponente.fxml"));
+            avalicaoLoader.setController(new AvaliacaoComponente(av, avaliacaoScrollPane));
             Node an = avalicaoLoader.load();
             avaliacaoScrollPane.getChildren().add(an);
         }
