@@ -46,7 +46,7 @@ public class TelaMidiaEspecifica implements Initializable {
     private void carregarAvaliacoes() throws IOException {
         for (Avaliacao av : midia.getAvaliacoes()) {
             FXMLLoader avalicaoLoader = new FXMLLoader(Main.class.getResource("AvaliacaoComponente.fxml"));
-            avalicaoLoader.setController(new AvaliacaoComponente(av, avaliacaoScrollPane));
+            avalicaoLoader.setController(new AvaliacaoComponente(av));
             Node an = avalicaoLoader.load();
             avaliacaoScrollPane.getChildren().add(an);
         }

@@ -8,15 +8,15 @@ public class Avaliacao {
     private double nota;
     private LocalDate createdAt;
     private String usuario;
-    private int midiaId;
+    private String midiaTitulo;
 
-    public Avaliacao(int id, String comentario, double nota, LocalDate createdAt, String usuario, int midiaId) {
+    public Avaliacao(int id, String comentario, double nota, LocalDate createdAt, String usuario, String midiaTitutlo) {
         this.id = id;
         this.comentario = comentario;
         this.nota = nota;
         this.createdAt = createdAt;
         this.usuario = usuario;
-        this.midiaId = midiaId;
+        this.midiaTitulo = midiaTitutlo;
     }
 
     // CRUD();
@@ -43,5 +43,21 @@ public class Avaliacao {
 
     public String getUsuario() {
         return usuario;
+    }
+
+    public String getMidiaTitulo() {
+        return midiaTitulo;
+    }
+
+    public void setMidiTitulo(String midiaTitulo) {
+        this.midiaTitulo = midiaTitulo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

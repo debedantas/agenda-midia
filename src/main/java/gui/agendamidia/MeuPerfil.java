@@ -22,4 +22,8 @@ public class MeuPerfil implements Initializable {
     public void voltar(ActionEvent actionEvent) {
         TelasController.getInstance().mostraTelaPrincipal();
     }
+
+    public void mostraMinhasAvaliacoes(ActionEvent actionEvent) {
+        TelasController.getInstance().mostraMinhasAvaliacoes();
+    }
 }

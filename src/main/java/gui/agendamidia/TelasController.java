@@ -75,11 +75,22 @@ public class TelasController {
         }
     }
 
+    public void mostraMinhasAvaliacoes() {
+        try {
+            FXMLLoader minhasAvaliacoes = new FXMLLoader(Main.class.getResource("MinhasAvaliacoes.fxml"));
+            Scene minhasAvaliacoesScene = new Scene(minhasAvaliacoes.load());
+            this.mainStage.setScene(minhasAvaliacoesScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void mostraTelaMidias() {
         try {
             FXMLLoader midiasLoader = new FXMLLoader(Main.class.getResource("TelaMidias.fxml"));
-            Scene midias = new Scene(midiasLoader.load());
-            this.mainStage.setScene(midias);
+            Scene midiasScene = new Scene(midiasLoader.load());
+            this.mainStage.setScene(midiasScene);
             this.mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,9 +99,9 @@ public class TelasController {
 
     public void mostraTelaMidiaEspecifica() {
         try {
-            FXMLLoader filmesLoader = new FXMLLoader(Main.class.getResource("TelaMidiaEspecifica.fxml"));
-            Scene filmes = new Scene(filmesLoader.load());
-            this.mainStage.setScene(filmes);
+            FXMLLoader midiaEspecificaLoader = new FXMLLoader(Main.class.getResource("TelaMidiaEspecifica.fxml"));
+            Scene midiaEspecificaScene = new Scene(midiaEspecificaLoader.load());
+            this.mainStage.setScene(midiaEspecificaScene);
             this.mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();

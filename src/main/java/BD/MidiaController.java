@@ -2,6 +2,7 @@ package BD;
 
 import modelo.Filme;
 import modelo.Genero;
+import modelo.Midia;
 import modelo.Serie;
 
 import java.sql.*;
@@ -10,12 +11,12 @@ import java.util.Vector;
 public class MidiaController {
     static Connection con = BDConnection.getConnection();
 
-    public Filme getFilme(int filmeId) throws SQLException {
+    public Midia getMidia(int midiaId) throws SQLException {
         String query = "Select * From \"Midia\" Where id = ?";
         PreparedStatement ps = con.prepareStatement(query);
-        ps.setInt(1, filmeId);
+        ps.setInt(1, midiaId);
         ResultSet rs = ps.executeQuery();
-        Filme filme = null;
+        Midia midia = null;
 
         while(rs.next()) {
             int id = rs.getInt("id");
@@ -23,11 +24,17 @@ public class MidiaController {
             int ano = rs.getInt("ano");
             Genero genero = Genero.valueOf(rs.getString("genero"));
             int duracao = rs.getInt("duracao");
-            filme = new Filme(id, titulo, ano, genero, duracao);
+            int numEpisodios = rs.getInt("numEpisodios");
+            if (rs.getString("tipo").equals("Filme")) {
+                midia = new Filme(id, titulo, ano, genero, duracao);
+            } else {
+                midia = new Serie(id, titulo, ano, genero, numEpisodios);
+            }
         }
 
-        return filme;
+        return midia;
     }
+
     public Vector<Filme> getFilmes() throws SQLException {
         String query = "Select * From \"Midia\" Where tipo = 'Filme'";
         Statement st = con.createStatement();
@@ -63,4 +70,6 @@ public class MidiaController {
         }
         return series;
     }
+
+
 }

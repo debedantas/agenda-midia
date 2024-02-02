@@ -48,7 +48,7 @@
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button mnemonicParsing="false" text="Minhas Avaliações" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <Button mnemonicParsing="false" onAction="#mostraMinhasAvaliacoes" text="Minhas Avaliações" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
