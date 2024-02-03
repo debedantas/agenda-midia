@@ -1,6 +1,8 @@
 package gui.agendamidia;
 
 import BD.AvaliacaoController;
+import BD.ListaController;
+import exceptions.MidiaJaNaListaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,7 +15,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 public class TelaMidiaEspecifica implements Initializable {
     private AvaliacaoController ac = new AvaliacaoController();
@@ -92,6 +96,46 @@ public class TelaMidiaEspecifica implements Initializable {
                 this.recarregarDados();
             } catch (SQLException | IOException e) {
                 throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void adicionarLista(ActionEvent actionEvent) throws SQLException {
+        ListaController lc = new ListaController();
+        Vector<Lista> listas = lc.getListas(ApplicationController.getInstance().getUsuarioLogado().getUsuario());
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Alerta");
+        alerta.setHeaderText(null);
+        if (listas.isEmpty()) {
+
+            alerta.setContentText("É preciso criar uma lista primeiro");
+            alerta.showAndWait();
+            return;
+        }
+
+        Vector<String> choices = new Vector<>();
+
+        for (Lista lista : listas) {
+            choices.add(lista.getNomeDaLista());
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
+        dialog.setTitle("Alerta");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Escolha a Lista:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            int index = choices.indexOf(result.get());
+            Lista listaEscolhida = listas.get(index);
+            try {
+                lc.adicionarMidiaLista(listaEscolhida.getId(), midia.getId());
+                alerta.setContentText(midia.getTitulo() + " foi adicionado a lista: " + listaEscolhida.getNomeDaLista());
+                alerta.showAndWait();
+            } catch (MidiaJaNaListaException e) {
+                alerta.setContentText(midia.getTitulo() + " já está na lista: " + listaEscolhida.getNomeDaLista());
+                alerta.showAndWait();
             }
         }
     }

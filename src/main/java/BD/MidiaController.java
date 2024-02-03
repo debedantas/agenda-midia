@@ -35,41 +35,29 @@ public class MidiaController {
         return midia;
     }
 
-    public Vector<Filme> getFilmes() throws SQLException {
-        String query = "Select * From \"Midia\" Where tipo = 'Filme'";
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        Vector<Filme> filmes = new Vector<>();
+    public Vector<Midia> getMidias(String tipo) throws SQLException {
+        String query = "Select * From \"Midia\" Where tipo = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, tipo);
+        ResultSet rs = ps.executeQuery();
+        Vector<Midia> midias = new Vector<>();
 
         while(rs.next()) {
+            Midia midia = null;
             int id = rs.getInt("id");
             String titulo = rs.getString("titulo");
             int ano = rs.getInt("ano");
             Genero genero = Genero.valueOf(rs.getString("genero"));
             int duracao = rs.getInt("duracao");
-            Filme f = new Filme(id, titulo, ano, genero, duracao);
-            filmes.add(f);
-        }
-        return filmes;
-    }
-
-    public Vector<Serie> getSeries() throws SQLException {
-        String query = "Select * From \"Midia\" Where tipo = 'Serie'";
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        Vector<Serie> series = new Vector<>();
-
-        while(rs.next()) {
-            int id = rs.getInt("id");
-            String titulo = rs.getString("titulo");
-            int ano = rs.getInt("ano");
-            Genero genero = Genero.valueOf(rs.getString("genero"));
             int numEpisodios = rs.getInt("numEpisodios");
-            Serie s = new Serie(id, titulo, ano, genero, numEpisodios);
-            series.add(s);
+            if (rs.getString("tipo").equals("Filme")) {
+                midia = new Filme(id, titulo, ano, genero, duracao);
+            } else {
+                midia = new Serie(id, titulo, ano, genero, numEpisodios);
+            }
+            midias.add(midia);
         }
-        return series;
+
+        return midias;
     }
-
-
 }

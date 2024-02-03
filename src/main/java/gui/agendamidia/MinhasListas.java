@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import modelo.Lista;
-import modelo.Serie;
 import modelo.Usuario;
 
 import java.net.URL;
@@ -20,24 +19,32 @@ public class MinhasListas implements Initializable {
     public VBox listaScrollPane;
     private final ListaController lc = new ListaController();
 
-    public void criarLista(ActionEvent actionEvent) throws SQLException {
-        TextInputDialog alert = new TextInputDialog("");
-        alert.setTitle("Alerta");
-        alert.setHeaderText(null);
-        alert.setContentText("Nome da Lista:");
+    public void criarLista(ActionEvent actionEvent) {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Alerta");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Nome da Lista:");
 
         ButtonType botaoCriar = new ButtonType("Criar", ButtonType.OK.getButtonData());
         ButtonType botaoCancelar = new ButtonType("Cancelar", ButtonType.CANCEL.getButtonData());
 
-        alert.getDialogPane().getButtonTypes().setAll(botaoCriar, botaoCancelar);
-        alert.getDialogPane().lookupButton(botaoCriar).disableProperty().bind(alert.getEditor().textProperty().isEmpty());
+        dialog.getDialogPane().getButtonTypes().setAll(botaoCriar, botaoCancelar);
+        dialog.getDialogPane().lookupButton(botaoCriar).disableProperty().bind(dialog.getEditor().textProperty().isEmpty());
 
-        Optional<String> result = alert.showAndWait();
+        Optional<String> result = dialog.showAndWait();
         if (result.isPresent() && !result.get().trim().isEmpty()){
-            Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
-            lc.addLista(usuario.getUsuario(), result.get());
-            listaScrollPane.getChildren().clear();
-            carregarListas();
+            try {
+                Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
+                lc.addLista(usuario.getUsuario(), result.get());
+                listaScrollPane.getChildren().clear();
+                carregarListas();
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Alerta");
+                alert.setHeaderText(null);
+                alert.setContentText("Nome já em uso");
+                alert.showAndWait();
+            }
         }
     }
 
@@ -51,9 +58,15 @@ public class MinhasListas implements Initializable {
         for (Lista lista : listas) {
             Button b = new Button();
             b.setOnAction(actionEvent -> {
-                System.out.println(lista.getNomeDaLista());
-//                ApplicationController.getInstance().setMidia(serie);
-//                TelasController.getInstance().mostraTelaMidiaEspecifica();
+                try {
+                    ApplicationController.getInstance().setShowMidias(lc.midiasDaLista(lista.getId()));
+                    ApplicationController.getInstance().setPaginaLabel(lista.getNomeDaLista());
+                    ApplicationController.getInstance().setPaginaAnterior("Minhas Listas");
+                    ApplicationController.getInstance().setListaId(lista.getId());
+                    TelasController.getInstance().mostraTelaMidias();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             });
             b.setText(lista.getNomeDaLista());
             listaScrollPane.getChildren().add(b);

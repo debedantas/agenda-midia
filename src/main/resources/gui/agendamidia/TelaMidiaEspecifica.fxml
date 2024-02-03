@@ -50,8 +50,17 @@
                         </Label>
                         <Label fx:id="anoMidia" text="Ano:" />
                         <Label fx:id="generoMidia" text="Genero:" />
-                        <Label fx:id="campoEspecificoMidia" text="Duração:" />
-                        <Label fx:id="notaMidia" text="Nota:" />
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <VBox style="-fx-spacing: 2;">
+                                 <children>
+                                    <Label fx:id="campoEspecificoMidia" prefHeight="18.0" prefWidth="208.0" text="Duração" />
+                                    <Label fx:id="notaMidia" text="Nota:" />
+                                 </children>
+                              </VBox>
+                              <Button mnemonicParsing="false" onAction="#adicionarLista" prefHeight="26.0" prefWidth="178.0" text="Adicionar a Lista" />
+                           </children>
+                        </HBox>
                      </children>
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

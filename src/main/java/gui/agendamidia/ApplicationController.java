@@ -3,11 +3,16 @@ package gui.agendamidia;
 import modelo.Midia;
 import modelo.Usuario;
 
+import java.util.Vector;
+
 public class ApplicationController {
     private static ApplicationController instance;
     private Usuario usuarioLogado;
     private Midia midia;
-    private String showMidia;
+    private Vector<Midia> showMidias;
+    private String paginaAnterior;
+    private String paginaLabel;
+    private int listaId;
 
     private ApplicationController() {}
 
@@ -35,11 +40,35 @@ public class ApplicationController {
         return midia;
     }
 
-    public void setShowMidia(String showMidia) {
-        this.showMidia = showMidia;
+    public void setShowMidias(Vector<Midia> showMidias) {
+        this.showMidias = showMidias;
     }
 
-    public String getShowMidia() {
-        return showMidia;
+    public Vector<Midia> getShowMidias() {
+        return showMidias;
+    }
+
+    public String getPaginaAnterior() {
+        return paginaAnterior;
+    }
+
+    public void setPaginaAnterior(String paginaAnterior) {
+        this.paginaAnterior = paginaAnterior;
+    }
+
+    public String getPaginaLabel() {
+        return paginaLabel;
+    }
+
+    public void setPaginaLabel(String paginaLabel) {
+        this.paginaLabel = paginaLabel;
+    }
+
+    public int getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(int listaId) {
+        this.listaId = listaId;
     }
 }
