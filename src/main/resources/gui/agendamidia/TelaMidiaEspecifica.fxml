@@ -41,13 +41,15 @@
                 <RowConstraints maxHeight="236.80001983642578" minHeight="10.0" prefHeight="236.80001983642578" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox style="-fx-spacing: 5;">
+                  <VBox style="-fx-spacing: 2;">
                      <children>
                         <Label fx:id="midiaLabel" text="Nome do Filme:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
+                        <Label fx:id="anoMidia" text="Ano:" />
+                        <Label fx:id="generoMidia" text="Genero:" />
                         <Label fx:id="campoEspecificoMidia" text="Duração:" />
                         <Label fx:id="notaMidia" text="Nota:" />
                      </children>

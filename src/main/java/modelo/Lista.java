@@ -7,6 +7,7 @@ import java.util.Vector;
 public class Lista {
     private int id;
     private String nomeDaLista;
+    private String usuario;
     private Vector<Midia> listaDeMidia = new Vector<>();
 
     public Lista() {
@@ -15,6 +16,12 @@ public class Lista {
 
     public Lista(String nomeDaLista) {
         this.nomeDaLista = nomeDaLista;
+    }
+
+    public Lista(int id, String nomeDaLista, String usuario) {
+        this.id = id;
+        this.nomeDaLista = nomeDaLista;
+        this.usuario = usuario;
     }
 
     public void adicionarMidia(Midia midia) throws MidiaJaNaListaException {

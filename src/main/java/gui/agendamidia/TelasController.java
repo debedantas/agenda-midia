@@ -107,4 +107,15 @@ public class TelasController {
             e.printStackTrace();
         }
     }
+
+    public void mostraMinhasListas() {
+        try {
+            FXMLLoader minhasListas = new FXMLLoader(Main.class.getResource("MinhasListas.fxml"));
+            Scene minhasListasScene = new Scene(minhasListas.load());
+            this.mainStage.setScene(minhasListasScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

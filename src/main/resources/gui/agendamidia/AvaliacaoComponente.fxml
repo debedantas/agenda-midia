@@ -15,7 +15,7 @@
             <Label fx:id="user" prefHeight="20.0" prefWidth="270.0" text="user" underline="true" />
             <Label fx:id="data" prefHeight="20.0" prefWidth="163.0" text="Data:" />
             <Label fx:id="nota" prefHeight="20.0" prefWidth="74.0" text="Nota: " />
-            <Label fx:id="comentario" alignment="TOP_LEFT" prefHeight="35.0" prefWidth="270.0" text="Comentário:" />
+            <Label fx:id="comentario" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="602.0" text="Comentário:" />
             <HBox fx:id="editAvaliacao" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="198.0" style="-fx-spacing: 5;">
                <children>
                   <Button mnemonicParsing="false" onAction="#deletar" style="-fx-background-color: transparent;">

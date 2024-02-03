@@ -33,4 +33,8 @@ public class TelaPrincipal implements Initializable {
         ApplicationController.getInstance().setShowMidia("Serie");
         TelasController.getInstance().mostraTelaMidias();
     }
+
+    public void mostraListas(ActionEvent actionEvent) {
+        TelasController.getInstance().mostraMinhasListas();
+    }
 }

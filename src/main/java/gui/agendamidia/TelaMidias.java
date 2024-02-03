@@ -45,6 +45,10 @@ public class TelaMidias implements Initializable {
         }
     }
 
+    private void setButtonsLista(MidiaController mc) throws SQLException {
+
+    }
+
     public void voltar(ActionEvent actionEvent) {
         TelasController.getInstance().mostraTelaPrincipal();
     }

@@ -12,6 +12,7 @@ import modelo.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class TelaMidiaEspecifica implements Initializable {
@@ -19,6 +20,8 @@ public class TelaMidiaEspecifica implements Initializable {
     private Midia midia;
     public VBox avaliacaoScrollPane;
     public Label midiaLabel;
+    public Label anoMidia;
+    public Label generoMidia;
     public Label campoEspecificoMidia;
     public Label notaMidia;
     public TextArea comentario;
@@ -33,6 +36,8 @@ public class TelaMidiaEspecifica implements Initializable {
             this.carregarNota();
 
             midiaLabel.setText(midia.getTitulo());
+            anoMidia.setText("Ano: " + midia.getAno());
+            generoMidia.setText("Gênero: " + midia.getGenero().toString());
             if (midia instanceof Filme) {
                 campoEspecificoMidia.setText("Duração: " + ((Filme) midia).getDuracao() + " minutos");
             } else if (midia instanceof Serie) {
@@ -53,7 +58,7 @@ public class TelaMidiaEspecifica implements Initializable {
     }
 
     private void carregarNota() {
-        notaMidia.setText("Nota: " + (!midia.getAvaliacoes().isEmpty() ? midia.getMedia() : "Sem nota"));
+        notaMidia.setText("Nota: " + (!midia.getAvaliacoes().isEmpty() ? String.format(Locale.US, "%.2f", midia.getMedia()) : "Sem nota"));
     }
 
     private void recarregarDados() throws SQLException, IOException {
