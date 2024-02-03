@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Vector;
 
 public class ListaController {
@@ -94,6 +95,17 @@ public class ListaController {
         return midias;
     }
 
+    public int editarNomeLista(int listaId, String nomeLista) throws SQLException {
+        String query = "Update \"Lista\" Set nome_lista = ? Where id = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, nomeLista);
+        ps.setInt(2, listaId);
+
+        int n = ps.executeUpdate();
+        return n;
+    }
+
     public int deletarLista(int listaId) throws SQLException {
         String query = "Delete from \"ListaMidia\" Where lista_id = ?;\n" +
                 "Delete from \"Lista\" Where id = ?\n";
@@ -101,6 +113,16 @@ public class ListaController {
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, listaId);
         ps.setInt(2, listaId);
+
+        int n = ps.executeUpdate();
+        return n;
+    }
+
+    public int deletarMidiaLista(int listaId, int midiaId) throws SQLException {
+        String query = "Delete From \"ListaMidia\" Where lista_id = ? AND midia_id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, listaId);
+        ps.setInt(2, midiaId);
 
         int n = ps.executeUpdate();
         return n;

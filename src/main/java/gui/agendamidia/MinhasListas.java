@@ -35,7 +35,7 @@ public class MinhasListas implements Initializable {
         if (result.isPresent() && !result.get().trim().isEmpty()){
             try {
                 Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
-                lc.addLista(usuario.getUsuario(), result.get());
+                lc.addLista(usuario.getUsuario(), result.get().trim());
                 listaScrollPane.getChildren().clear();
                 carregarListas();
             } catch (SQLException e) {
