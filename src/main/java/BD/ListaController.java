@@ -118,7 +118,7 @@ public class ListaController {
         return n;
     }
 
-    public int deletarMidiaLista(int listaId, int midiaId) throws SQLException {
+    public int removerMidiaLista(int listaId, int midiaId) throws SQLException {
         String query = "Delete From \"ListaMidia\" Where lista_id = ? AND midia_id = ?";
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, listaId);

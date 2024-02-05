@@ -1,6 +1,5 @@
 package gui.agendamidia;
 
-import BD.AvaliacaoController;
 import BD.ListaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -9,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Midia;
-import modelo.Usuario;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,7 +21,7 @@ public class TelaMidias implements Initializable {
     public VBox midiasScrollPane;
     public Label midiaLabel;
     public HBox botoesHBox;
-    public Button deletarMidiaButton;
+    public Button removerMidiaButton;
     public HBox labelHBox;
     public Button deletarListaButton;
     public Button editarListaButton;
@@ -34,7 +32,7 @@ public class TelaMidias implements Initializable {
             b.setText(midia.getTitulo());
             b.setOnAction(actionEvent -> {
                 if (estadoDeleta) {
-                    deletarMidiaLista(b, midia);
+                    removerMidiaLista(b, midia);
                 } else {
                     ApplicationController.getInstance().setMidia(midia);
                     TelasController.getInstance().mostraTelaMidiaEspecifica();
@@ -63,7 +61,7 @@ public class TelaMidias implements Initializable {
             if (!paginaAnterior.equals("Minhas Listas")) {
                 labelHBox.getChildren().remove(deletarListaButton);
                 labelHBox.getChildren().remove(editarListaButton);
-                botoesHBox.getChildren().remove(deletarMidiaButton);
+                botoesHBox.getChildren().remove(removerMidiaButton);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -123,14 +121,14 @@ public class TelaMidias implements Initializable {
     public void trocarEstado(ActionEvent actionEvent) {
         String deleteButtonStyle = "-fx-border-color: #777; -fx-border-radius: 2; -fx-background-color: #e63946; -fx-text-fill: #FCF6F5";
         if (estadoDeleta) {
-            deletarMidiaButton.setText("Deletar Mídia");
-            deletarMidiaButton.setStyle(deleteButtonStyle);
+            removerMidiaButton.setText("Remover Mídia");
+            removerMidiaButton.setStyle(deleteButtonStyle);
             for (Node botao : midiasScrollPane.getChildren()) {
                 botao.setStyle("");
             }
         } else {
-            deletarMidiaButton.setText("Cancelar");
-            deletarMidiaButton.setStyle("");
+            removerMidiaButton.setText("Cancelar");
+            removerMidiaButton.setStyle("");
             for (Node botao : midiasScrollPane.getChildren()) {
                 botao.setStyle(deleteButtonStyle);
             }
@@ -138,10 +136,10 @@ public class TelaMidias implements Initializable {
         estadoDeleta = !estadoDeleta;
     }
 
-    private void deletarMidiaLista(Button button, Midia midia) {
+    private void removerMidiaLista(Button button, Midia midia) {
         try {
             int listaId = ApplicationController.getInstance().getListaId();
-            lc.deletarMidiaLista(listaId, midia.getId());
+            lc.removerMidiaLista(listaId, midia.getId());
 
             midiasScrollPane.getChildren().remove(button);
             ApplicationController.getInstance().setShowMidias(lc.midiasDaLista(listaId));

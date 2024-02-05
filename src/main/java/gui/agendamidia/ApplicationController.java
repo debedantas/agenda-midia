@@ -12,6 +12,7 @@ public class ApplicationController {
     private Vector<Midia> showMidias;
     private String paginaAnterior;
     private String paginaLabel;
+    private String deletarTipo;
     private int listaId;
 
     private ApplicationController() {}
@@ -70,5 +71,13 @@ public class ApplicationController {
 
     public void setListaId(int listaId) {
         this.listaId = listaId;
+    }
+
+    public String getDeletarTipo() {
+        return deletarTipo;
+    }
+
+    public void setDeletarTipo(String deletarTipo) {
+        this.deletarTipo = deletarTipo;
     }
 }

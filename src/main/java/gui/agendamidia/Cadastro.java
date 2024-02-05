@@ -11,8 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import modelo.TipoUsuario;
 import modelo.Usuario;
 
@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class Cadastro implements Initializable {
     private ObservableList<String> contaSelectorItems = FXCollections.observableArrayList("Padrao", "Admin", "Critico");
-
+    private Usuario usuario;
     @FXML
     private AnchorPane cena;
 
@@ -34,15 +34,16 @@ public class Cadastro implements Initializable {
 
     @FXML
     private PasswordField senha;
+    public VBox cadastroVBox;
+    public VBox contaVBox;
 
     @FXML
-    void getSource(MouseEvent event) {
-
-    }
-
-    @FXML
-    void showLogin(ActionEvent event) {
-        TelasController.getInstance().mostraLogin();
+    void voltar(ActionEvent event) {
+        if (usuario != null && usuario.getTipo().equals(TipoUsuario.Admin)) {
+            TelasController.getInstance().mostraAdmin();
+        } else {
+            TelasController.getInstance().mostraLogin();
+        }
     }
 
     @FXML
@@ -51,18 +52,24 @@ public class Cadastro implements Initializable {
         alerta.setTitle("Alerta");
         alerta.setHeaderText(null);
 
-        if (login.getText().isEmpty() || senha.getText().isEmpty() || contaSelector.getValue().isEmpty()) {
+        if (login.getText().isEmpty() || senha.getText().isEmpty()) {
             alerta.setContentText("Todos os campos precisam ser preenchidos");
             alerta.showAndWait();
         } else {
             try {
+                Usuario user;
+                if (usuario != null && usuario.getTipo().equals(TipoUsuario.Admin)) {
+                    user = new Usuario(login.getText(), senha.getText(), TipoUsuario.valueOf(contaSelector.getValue()));
+                } else {
+                    user = new Usuario(login.getText(), senha.getText(), TipoUsuario.Padrao);
+                }
+
                 UsuarioController uc = new UsuarioController();
-                Usuario user = new Usuario(login.getText(), senha.getText(), TipoUsuario.valueOf(contaSelector.getValue()));
                 uc.addUsuario(user); // sai do bloco caso já exista
 
                 alerta.setContentText("Usuario Cadastrado");
                 alerta.showAndWait();
-                showLogin(null);
+                voltar(null);
             } catch (SQLException | UsuarioJaExisteException e) {
                 alerta.setContentText("Usuario Já existe");
                 alerta.showAndWait();
@@ -72,7 +79,12 @@ public class Cadastro implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        contaSelector.setItems(contaSelectorItems);
-        contaSelector.setValue("Padrao");
+        usuario = ApplicationController.getInstance().getUsuarioLogado();
+        if (usuario != null && usuario.getTipo().equals(TipoUsuario.Admin)) {
+            contaSelector.setItems(contaSelectorItems);
+            contaSelector.setValue("Padrao");
+        } else {
+            cadastroVBox.getChildren().remove(contaVBox);
+        }
     }
 }

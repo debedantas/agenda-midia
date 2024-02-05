@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.agendamidia.TelaAdmin">
+   <children>
+      <VBox layoutX="260.0" layoutY="112.0" prefHeight="512.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <Label text="Agenda De Mídia" textAlignment="CENTER">
+                     <font>
+                        <Font name="Rockwell" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="353.0" prefWidth="600.0" style="-fx-spacing: 20;">
+               <children>
+                  <Label text="Admin" />
+                  <Button mnemonicParsing="false" onAction="#adicionarMidia" text="Adicionar Mídia" />
+                  <Button mnemonicParsing="false" onAction="#deletarMidia" text="Deletar Mídia" />
+                  <Button mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Usuario" />
+                  <Button fx:id="botaoAdmin" mnemonicParsing="false" onAction="#removerUsuario" text="Remover Usuario" />
+                  <Button mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="113.6" style="-fx-border-color: #777; -fx-border-radius: 2; -fx-background-color: #aaa;" text="Voltar">
+                     <padding>
+                        <Insets bottom="4.0" left="20.0" right="20.0" top="4.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

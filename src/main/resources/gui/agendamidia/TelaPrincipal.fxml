@@ -23,13 +23,13 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="353.0" prefWidth="600.0" style="-fx-spacing: 20;">
+            <VBox fx:id="telaPrincipalVBox" alignment="CENTER" prefHeight="353.0" prefWidth="600.0" style="-fx-spacing: 20;">
                <children>
                   <Label fx:id="bemVindo" text="Bem Vindo, XXX" />
                   <Button mnemonicParsing="false" onAction="#meuPerfil" text="Meu Perfil" />
                   <Button mnemonicParsing="false" onAction="#mostraFilmes" text="Catálogo de Filmes" />
                   <Button mnemonicParsing="false" onAction="#mostraSeries" text="Catálogo de Séries" />
-                  <Button mnemonicParsing="false" onAction="#mostraListas" text="Minhas Listas" />
+                  <Button fx:id="botaoAdmin" mnemonicParsing="false" onAction="#mostraAdmin" text="Admin" />
                   <Button layoutX="267.0" layoutY="260.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #e63946; -fx-text-fill: #FCF6F5;" text="Logout" />
                </children>
             </VBox>

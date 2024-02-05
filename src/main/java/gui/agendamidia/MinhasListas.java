@@ -49,7 +49,7 @@ public class MinhasListas implements Initializable {
     }
 
     public void voltar(ActionEvent actionEvent) {
-        TelasController.getInstance().mostraTelaPrincipal();
+        TelasController.getInstance().mostraMeuPerfil();
     }
 
     private void carregarListas() throws SQLException {

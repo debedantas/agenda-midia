@@ -8,20 +8,8 @@ import java.io.IOException;
 
 public class TelasController {
     private static TelasController instance;
-    private Scene loginScene;
-    private Scene cadastroScene;
-
     private Stage mainStage;
-    private TelasController() {
-        try {
-            FXMLLoader loginLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
-            this.loginScene = new Scene(loginLoader.load());
-            FXMLLoader cadastroLoader = new FXMLLoader(Main.class.getResource("Cadastro.fxml"));
-            this.cadastroScene = new Scene(cadastroLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private TelasController() {}
 
     public static TelasController getInstance() {
         if (instance == null) {
@@ -44,13 +32,25 @@ public class TelasController {
     }
 
     public void mostraLogin() {
-        this.mainStage.setScene(loginScene);
-        this.mainStage.show();
+        try {
+            FXMLLoader loginLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
+            Scene loginScene = new Scene(loginLoader.load());
+            this.mainStage.setScene(loginScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void mostraCadastro() {
-        this.mainStage.setScene(cadastroScene);
-        this.mainStage.show();
+        try {
+            FXMLLoader cadastroLoader = new FXMLLoader(Main.class.getResource("Cadastro.fxml"));
+            Scene cadastroScene = new Scene(cadastroLoader.load());
+            this.mainStage.setScene(cadastroScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void mostraTelaPrincipal() {
@@ -113,6 +113,39 @@ public class TelasController {
             FXMLLoader minhasListas = new FXMLLoader(Main.class.getResource("MinhasListas.fxml"));
             Scene minhasListasScene = new Scene(minhasListas.load());
             this.mainStage.setScene(minhasListasScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraAdmin() {
+        try {
+            FXMLLoader telaAdmin = new FXMLLoader(Main.class.getResource("TelaAdmin.fxml"));
+            Scene telaAdminScene = new Scene(telaAdmin.load());
+            this.mainStage.setScene(telaAdminScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraAdicionarMidia() {
+        try {
+            FXMLLoader adicionarMidia = new FXMLLoader(Main.class.getResource("AdicionarMidia.fxml"));
+            Scene adicionarMidiaScene = new Scene(adicionarMidia.load());
+            this.mainStage.setScene(adicionarMidiaScene);
+            this.mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraDeletar() {
+        try {
+            FXMLLoader deletar = new FXMLLoader(Main.class.getResource("Deletar.fxml"));
+            Scene deletarScene = new Scene(deletar.load());
+            this.mainStage.setScene(deletarScene);
             this.mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();

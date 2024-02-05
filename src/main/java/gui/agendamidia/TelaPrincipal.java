@@ -3,7 +3,11 @@ package gui.agendamidia;
 import BD.MidiaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import modelo.TipoUsuario;
+import modelo.Usuario;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -12,10 +16,16 @@ import java.util.ResourceBundle;
 public class TelaPrincipal implements Initializable {
     private MidiaController mc = new MidiaController();
     public Label bemVindo;
+    public VBox telaPrincipalVBox;
+    public Button botaoAdmin;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bemVindo.setText("Bem vindo, " + ApplicationController.getInstance().getUsuarioLogado().getUsuario());
+        Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
+        bemVindo.setText("Bem vindo, " + usuario.getUsuario());
+        if (!usuario.getTipo().equals(TipoUsuario.Admin)) {
+            telaPrincipalVBox.getChildren().remove(botaoAdmin);
+        }
     }
 
     public void logout(ActionEvent actionEvent) {
@@ -41,7 +51,7 @@ public class TelaPrincipal implements Initializable {
         TelasController.getInstance().mostraTelaMidias();
     }
 
-    public void mostraListas(ActionEvent actionEvent) {
-        TelasController.getInstance().mostraMinhasListas();
+    public void mostraAdmin(ActionEvent actionEvent) {
+        TelasController.getInstance().mostraAdmin();
     }
 }

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +36,24 @@ public class UsuarioController implements IUsuarioController {
         return user;
     }
 
+    public Vector<Usuario> getUsuarios(String username) throws SQLException {
+        String query = "Select * From \"Users\" Where not usuario = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery();
+        Vector<Usuario> users = new Vector<>();
+
+        while(rs.next()) {
+            Usuario user = new Usuario();
+            user.setUsuario(rs.getString("usuario"));
+            user.setSenha(rs.getString("senha"));
+            user.setTipo(TipoUsuario.valueOf(rs.getString("tipo")));
+            users.add(user);
+        }
+
+        return users;
+    }
+
     @Override
     public int addUsuario(Usuario usuario) throws SQLException, UsuarioJaExisteException {
         if (usuario == null || getUsuario(usuario.getUsuario()) != null) {
@@ -57,6 +76,16 @@ public class UsuarioController implements IUsuarioController {
         if (u == null || !senha.equals(u.getSenha())) return null;
 
         return u;
+    }
+
+    public int deletarUsuario(String usuario) throws SQLException {
+        String query = "Delete from \"Users\" Where usuario = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, usuario);
+
+        int n = ps.executeUpdate();
+        return n;
     }
 
     public static void main(String[] args) {

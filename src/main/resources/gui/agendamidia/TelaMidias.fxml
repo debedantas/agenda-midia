@@ -59,7 +59,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="deletarMidiaButton" mnemonicParsing="false" onAction="#trocarEstado" prefHeight="26.0" prefWidth="113.6" style="-fx-border-color: #777; -fx-border-radius: 2; -fx-background-color: #e63946; -fx-text-fill: #FCF6F5;" text="Deletar Mídia">
+                        <Button fx:id="removerMidiaButton" mnemonicParsing="false" onAction="#trocarEstado" prefHeight="27.0" prefWidth="122.0" style="-fx-border-color: #777; -fx-border-radius: 2; -fx-background-color: #e63946; -fx-text-fill: #FCF6F5;" text="Remover Mídia">
                            <padding>
                               <Insets bottom="4.0" left="20.0" right="20.0" top="4.0" />
                            </padding>

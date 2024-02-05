@@ -11,10 +11,10 @@ import java.util.ResourceBundle;
 public class MeuPerfil implements Initializable {
     public Label nomeLabel;
     public Label tipoContaLabel;
-    private Usuario usuario;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usuario = ApplicationController.getInstance().getUsuarioLogado();
+        Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
         nomeLabel.setText("Nome: " + usuario.getUsuario());
         tipoContaLabel.setText("Tipo de conta: " + usuario.getTipo());
     }
@@ -25,5 +25,9 @@ public class MeuPerfil implements Initializable {
 
     public void mostraMinhasAvaliacoes(ActionEvent actionEvent) {
         TelasController.getInstance().mostraMinhasAvaliacoes();
+    }
+
+    public void mostraMinhasListas(ActionEvent actionEvent) {
+        TelasController.getInstance().mostraMinhasListas();
     }
 }
