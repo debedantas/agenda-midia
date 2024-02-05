@@ -11,9 +11,9 @@ public class Test {
      */
     public static void main(String[] args) {
         Connection con = null;
-        String url = "jdbc:postgresql://aws-0-us-west-1.pooler.supabase.com:5432/postgres?user=postgres.wthwdlfeyraxfycluznd&password=5EqvIKJQL0D7T8xT";
+        String pwd = "...";
+        String url = "jdbc:postgresql://aws-0-us-west-1.pooler.supabase.com:5432/postgres?user=postgres.wthwdlfeyraxfycluznd&password="+pwd;
         String usr = "postgres";
-        String pwd = "5EqvIKJQL0D7T8xT";
         try {
             Class.forName("org.postgresql.Driver");
 

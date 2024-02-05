@@ -1,5 +1,6 @@
 package gui.agendamidia;
 
+import BD.AvaliacaoController;
 import BD.ListaController;
 import BD.MidiaController;
 import BD.UsuarioController;
@@ -9,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
+import modelo.Avaliacao;
 import modelo.Lista;
 import modelo.Midia;
 import modelo.Usuario;
@@ -22,6 +24,8 @@ import java.util.Vector;
 public class Deletar implements Initializable {
     private MidiaController mc = new MidiaController();
     private UsuarioController uc = new UsuarioController();
+    private ListaController lc = new ListaController();
+    private AvaliacaoController ac = new AvaliacaoController();
     private Vector<Midia> midias;
     private Vector<Usuario> usuarios;
     public VBox midiasScrollPane;
@@ -128,8 +132,12 @@ public class Deletar implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == botaoDeletar){
-            ListaController lc = new ListaController();
             Vector<Lista> listasUsuario = lc.getListas(usuario.getUsuario());
+            Vector<Avaliacao> avaliacoesUsuario = ac.getAvaliacoes(usuario.getUsuario());
+
+            for (Avaliacao avaliacao: avaliacoesUsuario) {
+                ac.deletaAvaliacao(avaliacao.getId());
+            }
             for (Lista lista : listasUsuario) {
                 lc.deletarLista(lista.getId());
             }

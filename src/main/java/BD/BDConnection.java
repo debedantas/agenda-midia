@@ -12,7 +12,7 @@ public class BDConnection {
     static
     {
         String user = "postgres";
-        String pass = "5EqvIKJQL0D7T8xT";
+        String pass = "...";
         String url = "jdbc:postgresql://aws-0-us-west-1.pooler.supabase.com:5432/postgres?user=postgres.wthwdlfeyraxfycluznd&password="+pass;
         try {
             Class.forName("org.postgresql.Driver");
