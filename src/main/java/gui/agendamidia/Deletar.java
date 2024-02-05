@@ -1,5 +1,6 @@
 package gui.agendamidia;
 
+import BD.ListaController;
 import BD.MidiaController;
 import BD.UsuarioController;
 import javafx.event.ActionEvent;
@@ -8,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
+import modelo.Lista;
 import modelo.Midia;
 import modelo.Usuario;
 
@@ -126,6 +128,11 @@ public class Deletar implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == botaoDeletar){
+            ListaController lc = new ListaController();
+            Vector<Lista> listasUsuario = lc.getListas(usuario.getUsuario());
+            for (Lista lista : listasUsuario) {
+                lc.deletarLista(lista.getId());
+            }
             uc.deletarUsuario(usuario.getUsuario());
 
             recarregarBotoes();
