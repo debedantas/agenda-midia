@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import modelo.Avaliacao;
 import modelo.Lista;
@@ -29,6 +30,7 @@ public class Deletar implements Initializable {
     private Vector<Midia> midias;
     private Vector<Usuario> usuarios;
     public VBox midiasScrollPane;
+    public Label paginaLabel;
 
     private void setButtonsMidia(Vector<Midia> m) throws SQLException {
         for (Midia midia : m) {
@@ -68,9 +70,11 @@ public class Deletar implements Initializable {
         try {
             String tipo = ApplicationController.getInstance().getDeletarTipo();
             if (tipo.equals("Midia")) {
+                paginaLabel.setText("Mídias");
                 midias = mc.getMidias();
                 setButtonsMidia(midias);
             } else {
+                paginaLabel.setText("Usuários");
                 Usuario usuario = ApplicationController.getInstance().getUsuarioLogado();
                 usuarios = uc.getUsuarios(usuario.getUsuario());
                 setButtonsUsuarios(usuarios);
@@ -133,11 +137,8 @@ public class Deletar implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == botaoDeletar){
             Vector<Lista> listasUsuario = lc.getListas(usuario.getUsuario());
-            Vector<Avaliacao> avaliacoesUsuario = ac.getAvaliacoes(usuario.getUsuario());
 
-            for (Avaliacao avaliacao: avaliacoesUsuario) {
-                ac.deletaAvaliacao(avaliacao.getId());
-            }
+            ac.deletaAvaliacao(usuario.getUsuario());
             for (Lista lista : listasUsuario) {
                 lc.deletarLista(lista.getId());
             }

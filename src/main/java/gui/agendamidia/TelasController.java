@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class TelasController {
     private static TelasController instance;
-    private Stage mainStage;
+    private Stage mainStage; // Usado para mostrar as telas
     private TelasController() {}
 
     public static TelasController getInstance() {

@@ -40,6 +40,7 @@ public class ListaController {
         return listas;
     }
 
+    // Checa se o filme está na lista
     private static boolean jaExiste(int listaId, int midiaId) throws SQLException {
         String query = "SELECT COUNT(*) AS count FROM \"ListaMidia\" WHERE lista_id = ? AND midia_id = ?";
         PreparedStatement ps = con.prepareStatement(query);
@@ -69,7 +70,7 @@ public class ListaController {
     public Vector<Midia> midiasDaLista(int listaId) throws SQLException {
         String selectQuery = "Select \"Midia\".*, \"ListaMidia\".id as lista_midia_id, \"Lista\".id as lista_id From \"ListaMidia\" ";
         String joinQuery = "Left Join \"Midia\" On \"ListaMidia\".midia_id = \"Midia\".id Left Join \"Lista\" On \"ListaMidia\".lista_id = \"Lista\".id\n";
-        String whereQuery = "Where \"Lista\".id = ?";
+        String whereQuery = "Where \"Lista\".id = ? Order By \"Midia\".id";
         String query = selectQuery + joinQuery + whereQuery;
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, listaId);

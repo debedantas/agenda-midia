@@ -46,7 +46,7 @@ public class TelaPrincipal implements Initializable {
 
     public void mostraSeries(ActionEvent actionEvent) throws SQLException {
         ApplicationController.getInstance().setShowMidias(mc.getMidias("Serie"));
-        ApplicationController.getInstance().setPaginaLabel("Serie");
+        ApplicationController.getInstance().setPaginaLabel("Séries");
         ApplicationController.getInstance().setPaginaAnterior("Tela Principal");
         TelasController.getInstance().mostraTelaMidias();
     }

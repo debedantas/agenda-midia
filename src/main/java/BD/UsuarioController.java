@@ -36,6 +36,7 @@ public class UsuarioController implements IUsuarioController {
         return user;
     }
 
+    // Retorna todos os usuários menos o seu
     public Vector<Usuario> getUsuarios(String username) throws SQLException {
         String query = "Select * From \"Users\" Where not usuario = ?";
         PreparedStatement ps = con.prepareStatement(query);

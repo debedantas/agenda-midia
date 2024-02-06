@@ -30,7 +30,7 @@
                   <Label fx:id="midiaLabel" text="Minhas Avaliações" />
                   <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="766.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox fx:id="avaliacoesScrollPane" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="314.0" prefWidth="599.0" style="-fx-spacing: 20;">
+                        <VBox fx:id="avaliacoesScrollPane" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="248.0" prefWidth="620.0" style="-fx-spacing: 20;">
                            <padding>
                               <Insets left="40.0" />
                            </padding>

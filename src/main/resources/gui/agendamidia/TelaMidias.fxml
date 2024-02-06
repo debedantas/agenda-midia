@@ -51,7 +51,7 @@
                   </HBox>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="766.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                     <content>
-                        <VBox fx:id="midiasScrollPane" alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="252.0" prefWidth="619.0" style="-fx-spacing: 20;" />
+                        <VBox fx:id="midiasScrollPane" alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="252.0" prefWidth="702.0" style="-fx-spacing: 20;" />
                     </content>
                   </ScrollPane>
                   <HBox fx:id="botoesHBox" alignment="CENTER" style="-fx-spacing: 20;">

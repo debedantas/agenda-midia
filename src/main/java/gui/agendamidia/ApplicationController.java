@@ -7,13 +7,15 @@ import java.util.Vector;
 
 public class ApplicationController {
     private static ApplicationController instance;
-    private Usuario usuarioLogado;
-    private Midia midia;
-    private Vector<Midia> showMidias;
-    private String paginaAnterior;
-    private String paginaLabel;
-    private String deletarTipo;
-    private int listaId;
+    private Usuario usuarioLogado; // Informação do usuário que está usando a aplicação (EX: nome, se é admin, as listas, etc)
+    private Midia midia; // Informação de qual mídia deve ser aberta na tela de mídia específica
+    private Vector<Midia> showMidias; // Informação de qual mídias devem aparecer na lista de midias
+    private String paginaAnterior; // Algumas páginas precisam da informação de qual página voltar (ex: TelaMidias)
+    private String paginaLabel; // Informação para a TelaMidias qual deve ser o título da página
+    private String deletarTipo; // Na tela de Deletar, passa a informação de qual tipo de deletar deve ser (ou é usuario ou midia), a informação vem da tela Admin
+
+    private int listaId; //  na TelaMidias (quando está mostrando as midias de uma lista) serve para saber qual a lista selecionada quando for fazer alterações nela (Exemplo: renomear, deletar, remover midia)
+
 
     private ApplicationController() {}
 

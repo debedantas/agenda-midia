@@ -9,7 +9,7 @@ public class testeModelos {
         Midia serie1 = new Serie(3, "serie1", 1999, Genero.AVENTURA, 24);
         Midia serie2 = new Filme(4, "serie2", 2018, Genero.MUSICAL, 40);
 
-        IUsuario usuario = new UsuarioPadrao("user", "senha");
+        Usuario usuario = new Usuario("user", "senha", TipoUsuario.Padrao);
         Lista lista1 = new Lista("Lista 1");
         try {
             lista1.adicionarMidia(filme1);

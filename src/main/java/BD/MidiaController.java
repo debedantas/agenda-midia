@@ -36,7 +36,7 @@ public class MidiaController {
     }
 
     public Vector<Midia> getMidias() throws SQLException {
-        String query = "Select * From \"Midia\"";
+        String query = "Select * From \"Midia\" Order By id";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
         Vector<Midia> midias = new Vector<>();
@@ -61,7 +61,7 @@ public class MidiaController {
     }
 
     public Vector<Midia> getMidias(String tipo) throws SQLException {
-        String query = "Select * From \"Midia\" Where tipo = ?";
+        String query = "Select * From \"Midia\" Where tipo = ? Order By id";
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, tipo);
         ResultSet rs = ps.executeQuery();
@@ -114,11 +114,13 @@ public class MidiaController {
 
     public int deletarMidia(int midiaId) throws SQLException {
         String query = "Delete from \"ListaMidia\" Where midia_id = ?;\n" +
+                "Delete from \"Avaliacao\" Where midia_id = ?;" +
                 "Delete from \"Midia\" Where id = ?\n";
 
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, midiaId);
         ps.setInt(2, midiaId);
+        ps.setInt(3, midiaId);
 
         int n = ps.executeUpdate();
         return n;

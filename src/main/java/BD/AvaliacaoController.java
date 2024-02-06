@@ -46,6 +46,7 @@ public class AvaliacaoController {
         return avaliacao;
     }
 
+    // Todas as avaliações de uma midia
     public Vector<Avaliacao> getAvaliacoes(int midiaId) throws SQLException {
         String query = joinQuery + "Where midia_id = ? Order By created_at";
         PreparedStatement ps = con.prepareStatement(query);
@@ -66,6 +67,7 @@ public class AvaliacaoController {
         return avaliacoes;
     }
 
+    // Avaliações do usuário
     public Vector<Avaliacao> getAvaliacoes(String usuario) throws SQLException {
         String query = joinQuery + "Where usuario = ? Order By created_at";
         PreparedStatement ps = con.prepareStatement(query);
@@ -121,4 +123,15 @@ public class AvaliacaoController {
         int n = ps.executeUpdate();
         return n;
     }
+
+    public int deletaAvaliacao(String usuario) throws SQLException {
+        String query = "Delete From \"Avaliacao\" Where usuario = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, usuario);
+
+        int n = ps.executeUpdate();
+        return n;
+    }
+
 }
